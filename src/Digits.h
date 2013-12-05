@@ -17,7 +17,6 @@
 class Digits
 {
 private:
-	int foo;
 	int size;
 	char digits[7];
 public:
