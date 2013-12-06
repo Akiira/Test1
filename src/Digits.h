@@ -14,6 +14,7 @@
 #include <vector>
 #include <string>
 #include <cstdlib>
+#include <cstring>
 class Digits
 {
 private:
@@ -25,6 +26,13 @@ public:
 	Digits(int);
 	Digits(int, std::string &);
 	~Digits();
+
+	void resInitDigit(const Digits& d){
+		size = d.getSize();
+
+			std::strcpy(digits, d.getDigits());
+			digits[size] = '\0';
+	}
 
 	void setDigits(std::string &);
 	void increment(int);
