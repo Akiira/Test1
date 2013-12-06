@@ -31,13 +31,13 @@ DigitsTree::DigitsTree(Digits &startValue, int targetDigits)
 }
 DigitsTree::~DigitsTree()
 {
-//	while(!orphanedNodes.empty())
-//	{
-//		Node* p = orphanedNodes.front();
-//		orphanedNodes.pop();
-//
-//		delete p;
-//	}
+	while(!orphanedNodes.empty())
+	{
+		Node* p = orphanedNodes.front();
+		orphanedNodes.pop();
+
+		delete p;
+	}
 }
 
 //TODO add pre and post conditions
@@ -80,7 +80,7 @@ void DigitsTree::findShortestPath(std::bitset<10000000>& badValues2)
 
 
 				int value = children[j].getDigitsAsInt();
-				//orphanedNodes.push(child);
+				orphanedNodes.push(child);
 
 				if(!badValues2[value])
 				{
