@@ -100,11 +100,10 @@ FileBuffer::FileBuffer(FILE* pFile, string filename)
 
 	numberOfLines = lSize / (size + 2);
 
-	cout << "Number of lines: " << numberOfLines << "\n";
 }
 
 FileBuffer::~FileBuffer()
 {
-	free (buffer);
+	//free (buffer); //TODO determine if i should leave this out or not
 }
 
