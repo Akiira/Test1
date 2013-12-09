@@ -16,14 +16,15 @@ private:
 
 public:
 	Digits data;
-		char operation;
-		int index;
-		Node* parent;
-		Node* next;
+	char operation;
+	int index;
+	Node* parent;
+	Node* next;
+
 	Node(): data(),operation('!'), index(-1), parent(nullptr), next(nullptr) {}
 	Node(Digits &d, Node* p) : data(d), operation('!'), index(-1), parent(p), next(nullptr){}
 	Node(Digits &d, Node* p, char op, int in) : data(d), operation(op), index(in), parent(p), next(nullptr){}
-	~Node();
+
 
 	void setAll(Digits &d, Node* p, char op, int in)
 	{

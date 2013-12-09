@@ -13,7 +13,7 @@
 #include <iostream>
 #include <cstddef>
 #include <vector>
-#include <stack>
+//#include <stack>
 #include <sstream>
 typedef Node* nodePointer;
 DigitsTree::DigitsTree()
