@@ -15,7 +15,7 @@
 class MemoryAllocator
 {
 private:
-	const static int SIZE = 10000;
+	const static int SIZE = 1000000;
 	int currentIndex;
 	Node* memory;
 public:
@@ -24,11 +24,11 @@ public:
 
 	void getNewNode(Node*& ptr)
 	{
-		ptr = memory;
-		memory += 1;
+		ptr = &(memory[currentIndex]);
+		//memory += 1;
 		currentIndex++;
 
-		if(currentIndex == SIZE-1)
+		if(currentIndex == SIZE)
 			allocateMemory();
 	}
 
@@ -36,9 +36,7 @@ public:
 	{
 		currentIndex = 0;
 		memory = NULL;
-		memory = (Node*)malloc(SIZE * sizeof(Node));
-		if (memory == NULL) {std::cout<< "Memory Error!\n"; exit (2);}
-		//memory = new Node[SIZE];
+		memory = (Node*)calloc(SIZE, sizeof(Node));
 	}
 };
 

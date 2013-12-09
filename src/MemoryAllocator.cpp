@@ -9,6 +9,7 @@
 
 MemoryAllocator::MemoryAllocator()
 {
+	currentIndex = 0;
 	allocateMemory();
 }
 
