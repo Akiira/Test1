@@ -56,37 +56,27 @@ Digits::~Digits()
 //This function increments the digit on the safe for the spinner at the given index
 void Digits::increment(int index)
 {
-	if (index > 0 && index <= size)
-	{
-		int i = digits[index - 1] - 48;// subtract 48 to convert from ascii to int
+	int i = digits[index - 1] - 48;// subtract 48 to convert from ascii to int
 
-		if(i == 9)
-			i = 0;
-		else
-			i++;
-
-		digits[index - 1] = i + 48;
-	}
+	if(i == 9)
+		i = 0;
 	else
-		std::cerr << "Ilegal argument in Digits::increment, value passed was: " << index << "\n";
+		i++;
+
+	digits[index - 1] = i + 48;
 }
 
 //This function decrements the digit on the safe for the spinner at the given index
 void Digits::decrement(int index)
 {
-	if (index > 0 && index <= size)
-	{
-		int i = digits[index - 1] - 48;// subtract 48 to convert from ascii to int
+	int i = digits[index - 1] - 48;// subtract 48 to convert from ascii to int
 
-		if(i == 0)
-			i = 9;
-		else
-			i--;
-
-		digits[index - 1] = i + 48;
-	}
+	if(i == 0)
+		i = 9;
 	else
-		std::cerr << "Ilegal argument in Digits::decrement, value passed was: " << index << "\n" ;
+		i--;
+
+	digits[index - 1] = i + 48;
 }
 
 int Digits::getCountOfChildren()
