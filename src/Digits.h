@@ -35,8 +35,8 @@ public:
 	}
 
 	void setDigits(std::string &);
-	void increment(int);
-	void decrement(int);
+	inline void increment(int);
+	inline void decrement(int);
 	int getCountOfChildren();
 	//void getAllPossibleChildren(std::vector<Digits>& );
 
@@ -74,5 +74,24 @@ public:
 		this->size = size;
 	}
 };
+//This function increments the digit on the safe for the spinner at the given index
+inline void Digits::increment(int index)
+{
+	index--;
+	if(digits[index] == '9')
+		digits[index] = '0';
+	else
+		digits[index]++;
 
+}
+
+//This function decrements the digit on the safe for the spinner at the given index
+inline void Digits::decrement(int index)
+{
+	index--;
+	if(digits[index] == '0')
+		digits[index] = '9';
+	else
+		digits[index]--;
+}
 #endif /* DIGITS_H_ */
