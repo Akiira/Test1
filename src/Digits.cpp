@@ -56,27 +56,22 @@ Digits::~Digits()
 //This function increments the digit on the safe for the spinner at the given index
 void Digits::increment(int index)
 {
-	int i = digits[index - 1] - 48;// subtract 48 to convert from ascii to int
-
-	if(i == 9)
-		i = 0;
+	index--;
+	if(digits[index] == '9')
+		digits[index] = '0';
 	else
-		i++;
+		digits[index]++;
 
-	digits[index - 1] = i + 48;
 }
 
 //This function decrements the digit on the safe for the spinner at the given index
 void Digits::decrement(int index)
 {
-	int i = digits[index - 1] - 48;// subtract 48 to convert from ascii to int
-
-	if(i == 0)
-		i = 9;
+	index--;
+	if(digits[index] == '0')
+		digits[index] = '9';
 	else
-		i--;
-
-	digits[index - 1] = i + 48;
+		digits[index]--;
 }
 
 int Digits::getCountOfChildren()
