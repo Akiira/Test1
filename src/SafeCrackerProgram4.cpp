@@ -11,7 +11,7 @@
 #include <fstream>
 #include <cassert>
 #include <string>
-#include <tr1/unordered_set>
+#include <cstdio>
 #include <time.h>
 #include <bitset>
 
@@ -22,13 +22,14 @@
 using namespace std;
 
 void findShortestPath(string name);
+void findShortestPath2(string name);
 
 int main(int argc, char *argv[])
 {
 	clock_t t1, t2;
 	t1 = clock();
 
-	findShortestPath(argv[2]);
+	findShortestPath2(argv[2]);
 
 	t2 = clock();
 	float diff((float) t2 - (float) t1);
@@ -60,4 +61,41 @@ void findShortestPath(string name)
 	DigitsTree t(start, target.getDigitsAsInt());
 	t.findShortestPath(badValues3);
 }
+void findShortestPath2(string name)
+{
+	bitset<10000000> badValues3;
 
+	//FileBuffer fileBuffer(stdin, name);
+
+	//FILE* p;
+	freopen(name.c_str(), "rb", stdin);
+	//p = fopen (name.c_str() , "rb" );
+
+	//stdin = p;
+	cin.sync_with_stdio(false);
+	string startDigits;
+	string targetDigits;
+
+	cin >> startDigits;
+	cin >> targetDigits;
+
+	cout <<"Starting digits: " << startDigits << "\n";
+	cout << "Target digits: " << targetDigits << "\n";
+
+
+	Digits start(startDigits.length(), startDigits);
+	Digits target(startDigits.length(), targetDigits);
+
+	badValues3.set(atoi(startDigits.c_str()),1);
+	int i;
+	while(!cin.eof()){
+
+		cin >> i;
+		badValues3.set(i, 1);
+	}
+
+	cout << "Last i: " << i << "\n";
+
+	DigitsTree t(start, target.getDigitsAsInt());
+	t.findShortestPath(badValues3);
+}
