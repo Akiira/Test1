@@ -34,16 +34,7 @@ Digits::Digits(int size, std::string &digitValues)
 
 void Digits::setDigits(std::string& digitValues)
 {
-	char *foo;
-	foo = new char[size];
-
-	std::strcpy(foo, digitValues.c_str());
-
-
-	for(int i = 0; i < size; i++)
-		digits[i] = foo[i];
-
-	delete foo;
+	std::strcpy(digits, digitValues.c_str());
 
 	digits[size] = '\0';
 }
