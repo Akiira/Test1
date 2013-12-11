@@ -2,7 +2,7 @@
  * Node.h
  *
  *  Created on: Dec 5, 2013
- *      Author:
+ *      Author: Randall Hudson
  */
 
 #ifndef NODE_H_

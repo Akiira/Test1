@@ -5,9 +5,6 @@
  *      Author: Randall Hudson
  */
 
-//TODO possibly create operator=() function or create a get function that returns the digits
-//		represented as an integar, this will make comparison easyier, and possibly speed up preformance
-
 #ifndef DIGITS_H_
 #define DIGITS_H_
 
@@ -15,6 +12,7 @@
 #include <string>
 #include <cstdlib>
 #include <cstring>
+
 class Digits
 {
 private:
@@ -25,60 +23,67 @@ public:
 	Digits(const Digits& d);
 	Digits(int);
 	Digits(int, std::string &);
-	~Digits();
 
+
+	//reset the digit to the one passed in
 	void resInitDigit(const Digits& d){
 		size = d.getSize();
 
-			std::strcpy(digits, d.getDigits());
-			digits[size] = '\0';
+		std::strcpy(digits, d.getDigits());
+		digits[size] = '\0';
 	}
 
-	void setDigits(std::string &);
-	inline void increment(int);
-	inline void decrement(int);
 	int getCountOfChildren();
-	//void getAllPossibleChildren(std::vector<Digits>& );
+	void setDigits(std::string &);
 
+	inline void increment(int);//increment the digit at an index
+	inline void decrement(int);//decrement the digit at an index
+	inline void getAllPossibleChildren(std::vector<Digits>& children) const;
+	inline const int getDigitsAsInt() const;
+	inline const char* getDigits() const;
+	inline int getSize() const;
+	inline void setSize(int size);
 
-	void getAllPossibleChildren(std::vector<Digits>& children) const
-	{
-		for(int i = 0; i < size; i++)
-		{
-			Digits d(*this);
-			d.increment(i + 1);
-			children[2*i] = d;
-
-			Digits d2(*this);
-			d2.decrement(i + 1);
-			children[2*i + 1] = d2;
-		}
-	}
-
-	const int getDigitsAsInt() const
-	{
-		return std::atoi(digits);
-	}
-	const char* getDigits() const
-	{
-		return digits;
-	}
-
-	int getSize() const
-	{
-		return size;
-	}
-
-	void setSize(int size)
-	{
-		this->size = size;
-	}
 };
+
+inline void Digits::getAllPossibleChildren(std::vector<Digits>& children) const
+{
+	for (int i = 0; i < size; i++)
+	{
+		Digits d(*this);
+		d.increment(i + 1);
+		children[2 * i] = d;
+
+		Digits d2(*this);
+		d2.decrement(i + 1);
+		children[2 * i + 1] = d2;
+	}
+}
+
+inline const int Digits::getDigitsAsInt() const
+{
+	return std::atoi(digits);
+}
+inline const char* Digits::getDigits() const
+{
+	return digits;
+}
+
+inline int Digits::getSize() const
+{
+	return size;
+}
+
+inline void Digits::setSize(int size)
+{
+	this->size = size;
+}
+
 //This function increments the digit on the safe for the spinner at the given index
 inline void Digits::increment(int index)
 {
 	index--;
-	if(digits[index] == '9')
+	if (digits[index] == '9')
 		digits[index] = '0';
 	else
 		digits[index]++;
@@ -89,7 +94,7 @@ inline void Digits::increment(int index)
 inline void Digits::decrement(int index)
 {
 	index--;
-	if(digits[index] == '0')
+	if (digits[index] == '0')
 		digits[index] = '9';
 	else
 		digits[index]--;

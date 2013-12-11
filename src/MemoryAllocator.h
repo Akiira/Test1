@@ -2,7 +2,7 @@
  * MemoryAllocator.h
  *
  *  Created on: Dec 5, 2013
- *      Author:
+ *      Author: Randall Hudson
  */
 
 #ifndef MEMORYALLOCATOR_H_
@@ -25,18 +25,18 @@ public:
 	void getNewNode(Node*& ptr)
 	{
 		ptr = &(memory[currentIndex]);
-		//memory += 1;
+
 		currentIndex++;
 
-		if(currentIndex == SIZE)
+		if(currentIndex == SIZE) // we have used it all and must allocate more
 			allocateMemory();
 	}
 
 	void allocateMemory()
 	{
 		currentIndex = 0;
-		memory = NULL;
-		memory = (Node*)calloc(SIZE, sizeof(Node));
+		memory = nullptr;
+		memory = (Node*)malloc(SIZE* sizeof(Node));
 	}
 };
 

@@ -2,7 +2,7 @@
  * MemoryAllocator.cpp
  *
  *  Created on: Dec 5, 2013
- *      Author:
+ *      Author: Randall Hudson
  */
 
 #include "MemoryAllocator.h"

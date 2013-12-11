@@ -13,9 +13,7 @@
 
 Digits::Digits()
 {
-	size = 0;
 
-	std::strcpy(digits, "0000000");
 }
 
 Digits::Digits(const Digits& d)
@@ -39,10 +37,6 @@ void Digits::setDigits(std::string& digitValues)
 	digits[size] = '\0';
 }
 
-Digits::~Digits()
-{
-
-}
 
 int Digits::getCountOfChildren()
 {

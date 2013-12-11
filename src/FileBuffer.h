@@ -2,18 +2,16 @@
  * FileBuffer.h
  *
  *  Created on: Nov 25, 2013
- *      Author:
+ *      Author: Randall Hudson
  */
 
 #ifndef FILEBUFFER_H_
 #define FILEBUFFER_H_
+
 #include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-
-//TODO add isAtEnd() which returns a boolean if iterator is at the end of buffer
 
 class FileBuffer
 {
@@ -23,34 +21,37 @@ private:
 	int size;
 	int numberOfLines;
 	int currentPosition;
-
 	void determineSize();
+
 public:
-	FileBuffer();
 	FileBuffer(FILE * pFile);
 	FileBuffer(FILE * pFile, string filename);
 	~FileBuffer();
 
-	void next(){
-		iterator+= size + 2;
-		currentPosition++;
-	}
-
-	bool isAtEnd(){
-		if(currentPosition > numberOfLines)
-			return true;
-		else
-			return false;
-	}
-
-	int getNextInt(){currentPosition++; return strtol(iterator, &iterator, 10);}
-
-	string getNextLine(){
-		string s(iterator, size);
-		next();
-		return s;
-	}
-	int getNumberOfDigits(){return size;}
+	inline bool isAtEnd();
+	inline int getNextInt();
+	inline string getNextLine();
+	inline int getNumberOfDigits();
 };
+inline int FileBuffer::getNumberOfDigits()
+{
+	return size;
+}
+inline int FileBuffer::getNextInt()
+{
+	currentPosition++;
+	return strtol(iterator, &iterator, 10);
+}
+inline string FileBuffer::getNextLine()
+{
+	string s(iterator, size);
+	iterator += size + 2;
+	currentPosition++;
+	return s;
+}
+inline bool FileBuffer::isAtEnd()
+{
+	return (currentPosition > numberOfLines);
+}
 
 #endif /* FILEBUFFER_H_ */

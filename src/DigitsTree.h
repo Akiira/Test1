@@ -19,25 +19,17 @@
 class DigitsTree
 {
 private:
-	//TODO change as much as possible to pass by reference instead of by value
-
-
+	Node* root;
+	int targetDigits;
+	std::queue<Node*> Q;
 
 public:
-	Node* root;
-		int targetDigits;
-		std::queue<Node*> Q;
-		std::queue<Node*> orphanedNodes;
-	DigitsTree();
 	DigitsTree(Digits &startValue, int targetDigits);
 	~DigitsTree();
 
-	void findShortestPath();
 	void findShortestPath(std::bitset<10000000>&);
 	void printRoute(Node*&);
 
-	/********************************TEST FUNCTIONS*********************/
-	void toString();
 };
 
 #endif /* DIGITSTREE_H_ */
